@@ -1,0 +1,170 @@
+[gd_scene load_steps=16 format=3 uid="uid://dqfnen7afcr6y"]
+
+[ext_resource type="Texture2D" uid="uid://ceevm50om2fxh" path="res://PNG/Default/tile_brick.png" id="1_2bq5w"]
+[ext_resource type="PackedScene" uid="uid://rphmn6ot36si" path="res://Scenes/Player.tscn" id="1_xgrqb"]
+[ext_resource type="Texture2D" uid="uid://dx175eal7t1u8" path="res://PNG/Default/tile_water.png" id="2_ph2kp"]
+[ext_resource type="PackedScene" uid="uid://bfbynnbss4k7g" path="res://Scenes/Platform.tscn" id="3_8focr"]
+[ext_resource type="AudioStream" uid="uid://bhkc1ggxd5dse" path="res://Audio/bullet_well_theme.wav" id="4_l74ji"]
+[ext_resource type="Script" uid="uid://b706pb7hafpc8" path="res://Scripts/hand.gd" id="5_8j3e6"]
+[ext_resource type="Texture2D" uid="uid://bwqol1kedlkq4" path="res://PNG/Default/character_handYellow.png" id="5_cxi64"]
+[ext_resource type="Texture2D" uid="uid://dpqlm8k1asrrk" path="res://PNG/Default/item_blaster.png" id="6_8j3e6"]
+[ext_resource type="PackedScene" uid="uid://byp8ylmuii5rc" path="res://Scenes/Projectile.tscn" id="6_g2pce"]
+[ext_resource type="Script" uid="uid://dvxek8wb2aan3" path="res://Scripts/game_manager.gd" id="9_hr4ff"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xgrqb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgrqb"]
+size = Vector2(53.5, 650)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l74ji"]
+size = Vector2(420, 61)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cxi64"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ph2kp"]
+
+[node name="Main" type="Node2D"]
+material = SubResource("ShaderMaterial_xgrqb")
+
+[node name="Well" type="Node2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="Wall_L" type="StaticBody2D" parent="Well"]
+position = Vector2(-200, 0)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Well/Wall_L"]
+position = Vector2(-18, -1)
+shape = SubResource("RectangleShape2D_xgrqb")
+
+[node name="TextureRect" type="TextureRect" parent="Well/Wall_L/CollisionShape2D"]
+offset_left = -33.0
+offset_top = -327.0
+offset_right = 31.0
+offset_bottom = 332.0
+texture = ExtResource("1_2bq5w")
+stretch_mode = 1
+
+[node name="Wall_R" type="StaticBody2D" parent="Well"]
+position = Vector2(217, -2)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Well/Wall_R"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_xgrqb")
+
+[node name="TextureRect" type="TextureRect" parent="Well/Wall_R/CollisionShape2D"]
+offset_left = -30.0
+offset_top = -326.5
+offset_right = 34.0
+offset_bottom = 332.5
+texture = ExtResource("1_2bq5w")
+stretch_mode = 1
+
+[node name="Bottom" type="StaticBody2D" parent="Well" groups=["abyss"]]
+z_index = 2
+position = Vector2(0, 324)
+collision_mask = 2
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Well/Bottom"]
+shape = SubResource("RectangleShape2D_l74ji")
+
+[node name="TextureRect" type="TextureRect" parent="Well/Bottom/CollisionShape2D"]
+offset_left = -193.99998
+offset_top = -50.0
+offset_right = 215.23698
+offset_bottom = 14.0
+scale = Vector2(0.93588805, 0.93588805)
+texture = ExtResource("2_ph2kp")
+stretch_mode = 1
+
+[node name="Platform" parent="Well" instance=ExtResource("3_8focr")]
+position = Vector2(40, 215)
+scale = Vector2(4.959997, 1)
+
+[node name="Platform2" parent="Well" instance=ExtResource("3_8focr")]
+position = Vector2(-41, 69)
+scale = Vector2(4.959997, 1)
+
+[node name="Platform3" parent="Well" instance=ExtResource("3_8focr")]
+position = Vector2(37, -95)
+scale = Vector2(4.959997, 1)
+
+[node name="Platform4" parent="Well" instance=ExtResource("3_8focr")]
+position = Vector2(-70, -241)
+scale = Vector2(0.99999714, 1)
+
+[node name="PlayerCollection" type="Node2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="Player" parent="PlayerCollection" groups=["player"] instance=ExtResource("1_xgrqb")]
+position = Vector2(4, 248)
+
+[node name="Camera2D" type="Camera2D" parent="PlayerCollection/Player"]
+
+[node name="Hand" type="RigidBody2D" parent="PlayerCollection"]
+top_level = true
+position = Vector2(605, 572)
+collision_layer = 2
+collision_mask = 0
+linear_damp = 12.0
+angular_damp = 12.0
+script = ExtResource("5_8j3e6")
+projectile_scene = ExtResource("6_g2pce")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollection/Hand"]
+shape = SubResource("CircleShape2D_cxi64")
+
+[node name="HandDot" type="Sprite2D" parent="PlayerCollection/Hand"]
+z_index = 1
+position = Vector2(-12, 9)
+texture = ExtResource("5_cxi64")
+
+[node name="Gun" type="Sprite2D" parent="PlayerCollection/Hand"]
+texture = ExtResource("6_8j3e6")
+metadata/_edit_group_ = true
+
+[node name="Muzzle" type="Marker2D" parent="PlayerCollection/Hand/Gun"]
+position = Vector2(15, -3)
+
+[node name="GunTimer" type="Timer" parent="PlayerCollection/Hand"]
+wait_time = 0.5
+autostart = true
+
+[node name="HandJoint" type="PinJoint2D" parent="PlayerCollection"]
+top_level = true
+position = Vector2(580, 572)
+node_a = NodePath("../Player")
+node_b = NodePath("../Hand")
+
+[node name="DeathSystem" type="Node2D" parent="."]
+position = Vector2(577, 684)
+scale = Vector2(24.84, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="DeathSystem"]
+
+[node name="KillLine" type="CollisionShape2D" parent="DeathSystem/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ph2kp")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+offset_left = 1.0000305
+offset_top = -0.99999905
+offset_right = 428.00003
+offset_bottom = 647.0
+scale = Vector2(2.6954594, 0.99975336)
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_l74ji")
+autoplay = true
+
+[node name="Game Manager" type="Node" parent="." groups=["game_manager"]]
+script = ExtResource("9_hr4ff")
