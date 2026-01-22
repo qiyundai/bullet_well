@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfjnpjos55xma"]
+
+[ext_resource type="Texture2D" uid="uid://ceevm50om2fxh" path="res://PNG/Default/tile_brick.png" id="1_2p0br"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8r34y"]
+size = Vector2(59.75, 3323)
+
+[node name="Wall" type="Node2D"]
+
+[node name="WallBody" type="StaticBody2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBody"]
+shape = SubResource("RectangleShape2D_8r34y")
+
+[node name="TextureRect" type="TextureRect" parent="WallBody/CollisionShape2D"]
+offset_left = -32.0
+offset_top = -1664.0
+offset_right = 32.0
+offset_bottom = 1664.0
+texture = ExtResource("1_2p0br")
+stretch_mode = 1

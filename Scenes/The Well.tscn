@@ -1,9 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://dqfnen7afcr6y"]
+[gd_scene load_steps=15 format=3 uid="uid://dqfnen7afcr6y"]
 
-[ext_resource type="Texture2D" uid="uid://ceevm50om2fxh" path="res://PNG/Default/tile_brick.png" id="1_2bq5w"]
 [ext_resource type="PackedScene" uid="uid://rphmn6ot36si" path="res://Scenes/Player.tscn" id="1_xgrqb"]
-[ext_resource type="Texture2D" uid="uid://dx175eal7t1u8" path="res://PNG/Default/tile_water.png" id="2_ph2kp"]
+[ext_resource type="Texture2D" uid="uid://bqnpsre5qjvkg" path="res://PNG/Default/tile_grass.png" id="2_8focr"]
 [ext_resource type="PackedScene" uid="uid://bfbynnbss4k7g" path="res://Scenes/Platform.tscn" id="3_8focr"]
+[ext_resource type="PackedScene" uid="uid://bfjnpjos55xma" path="res://Scenes/Wall.tscn" id="4_4om41"]
 [ext_resource type="AudioStream" uid="uid://bhkc1ggxd5dse" path="res://Audio/bullet_well_theme.wav" id="4_l74ji"]
 [ext_resource type="Script" uid="uid://b706pb7hafpc8" path="res://Scripts/hand.gd" id="5_8j3e6"]
 [ext_resource type="Texture2D" uid="uid://bwqol1kedlkq4" path="res://PNG/Default/character_handYellow.png" id="5_cxi64"]
@@ -13,140 +13,132 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xgrqb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgrqb"]
-size = Vector2(53.5, 650)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l74ji"]
-size = Vector2(420, 61)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_cxi64"]
+size = Vector2(575, 61)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ph2kp"]
+size = Vector2(28.985506, 18)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cxi64"]
 
 [node name="Main" type="Node2D"]
 material = SubResource("ShaderMaterial_xgrqb")
 
+[node name="Player" parent="." groups=["player"] instance=ExtResource("1_xgrqb")]
+position = Vector2(351, 981)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = 0
+limit_right = 720
+limit_bottom = 1080
+editor_draw_limits = true
+
 [node name="Well" type="Node2D" parent="."]
-position = Vector2(576, 324)
+position = Vector2(360, 720)
 
-[node name="Wall_L" type="StaticBody2D" parent="Well"]
-position = Vector2(-200, 0)
-collision_mask = 2
+[node name="WallL" parent="Well" instance=ExtResource("4_4om41")]
+position = Vector2(-260, -1302)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Well/Wall_L"]
-position = Vector2(-18, -1)
-shape = SubResource("RectangleShape2D_xgrqb")
-
-[node name="TextureRect" type="TextureRect" parent="Well/Wall_L/CollisionShape2D"]
-offset_left = -33.0
-offset_top = -327.0
-offset_right = 31.0
-offset_bottom = 332.0
-texture = ExtResource("1_2bq5w")
-stretch_mode = 1
-
-[node name="Wall_R" type="StaticBody2D" parent="Well"]
-position = Vector2(217, -2)
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Well/Wall_R"]
-position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_xgrqb")
-
-[node name="TextureRect" type="TextureRect" parent="Well/Wall_R/CollisionShape2D"]
-offset_left = -30.0
-offset_top = -326.5
-offset_right = 34.0
-offset_bottom = 332.5
-texture = ExtResource("1_2bq5w")
-stretch_mode = 1
+[node name="WallR" parent="Well" instance=ExtResource("4_4om41")]
+position = Vector2(251, -1302)
 
 [node name="Bottom" type="StaticBody2D" parent="Well" groups=["abyss"]]
-z_index = 2
-position = Vector2(0, 324)
+position = Vector2(-4, 329)
 collision_mask = 2
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Well/Bottom"]
 shape = SubResource("RectangleShape2D_l74ji")
 
-[node name="TextureRect" type="TextureRect" parent="Well/Bottom/CollisionShape2D"]
-offset_left = -193.99998
-offset_top = -50.0
-offset_right = 215.23698
-offset_bottom = 14.0
-scale = Vector2(0.93588805, 0.93588805)
-texture = ExtResource("2_ph2kp")
+[node name="TextureRect" type="TextureRect" parent="Well/Bottom"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -288.0
+offset_top = -32.0
+offset_right = 287.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8focr")
 stretch_mode = 1
 
 [node name="Platform" parent="Well" instance=ExtResource("3_8focr")]
-position = Vector2(40, 215)
-scale = Vector2(4.959997, 1)
+position = Vector2(-124, 157)
 
 [node name="Platform2" parent="Well" instance=ExtResource("3_8focr")]
-position = Vector2(-41, 69)
-scale = Vector2(4.959997, 1)
+position = Vector2(21, 16)
 
 [node name="Platform3" parent="Well" instance=ExtResource("3_8focr")]
-position = Vector2(37, -95)
-scale = Vector2(4.959997, 1)
+position = Vector2(-168, -50)
 
 [node name="Platform4" parent="Well" instance=ExtResource("3_8focr")]
-position = Vector2(-70, -241)
-scale = Vector2(0.99999714, 1)
+position = Vector2(53, -221)
 
-[node name="PlayerCollection" type="Node2D" parent="."]
-position = Vector2(576, 324)
+[node name="Platform5" parent="Well" instance=ExtResource("3_8focr")]
+position = Vector2(-59, -390)
 
-[node name="Player" parent="PlayerCollection" groups=["player"] instance=ExtResource("1_xgrqb")]
-position = Vector2(4, 248)
+[node name="Platform6" parent="Well" instance=ExtResource("3_8focr")]
+position = Vector2(190, -477)
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PlayerCollection/Player"]
-remote_path = NodePath("../../../Camera2D")
+[node name="Platform7" parent="Well" instance=ExtResource("3_8focr")]
+position = Vector2(12, -641)
 
-[node name="Hand" type="RigidBody2D" parent="PlayerCollection"]
-top_level = true
-z_index = 1
-position = Vector2(605, 572)
-collision_layer = 2
-linear_damp = 12.0
-angular_damp = 12.0
-script = ExtResource("5_8j3e6")
-projectile_scene = ExtResource("6_g2pce")
-metadata/_edit_group_ = true
+[node name="Platform8" parent="Well" instance=ExtResource("3_8focr")]
+position = Vector2(-156, -753)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollection/Hand"]
-shape = SubResource("CircleShape2D_cxi64")
+[node name="Platform9" parent="Well" instance=ExtResource("3_8focr")]
+position = Vector2(7, -935)
 
-[node name="HandDot" type="Sprite2D" parent="PlayerCollection/Hand"]
-z_index = 1
-position = Vector2(-12, 9)
-texture = ExtResource("5_cxi64")
+[node name="Platform10" parent="Well" instance=ExtResource("3_8focr")]
+position = Vector2(118, -993)
 
-[node name="Gun" type="Sprite2D" parent="PlayerCollection/Hand"]
-texture = ExtResource("6_8j3e6")
-metadata/_edit_group_ = true
+[node name="Platform11" parent="Well" instance=ExtResource("3_8focr")]
+position = Vector2(-131, -1136)
 
-[node name="Muzzle" type="Marker2D" parent="PlayerCollection/Hand/Gun"]
-position = Vector2(15, -3)
+[node name="Platform12" parent="Well" instance=ExtResource("3_8focr")]
+position = Vector2(20, -1334)
 
-[node name="GunTimer" type="Timer" parent="PlayerCollection/Hand"]
-wait_time = 0.5
-autostart = true
+[node name="Platform13" parent="Well" instance=ExtResource("3_8focr")]
+position = Vector2(-92, -1562)
 
-[node name="HandJoint" type="PinJoint2D" parent="PlayerCollection"]
-top_level = true
-position = Vector2(580, 572)
-node_a = NodePath("../Player")
-node_b = NodePath("../Hand")
+[node name="Platform14" parent="Well" instance=ExtResource("3_8focr")]
+position = Vector2(-59, -1734)
 
-[node name="DeathSystem" type="Node2D" parent="."]
-position = Vector2(577, 684)
+[node name="Platform15" parent="Well" instance=ExtResource("3_8focr")]
+position = Vector2(190, -1821)
+
+[node name="Platform16" parent="Well" instance=ExtResource("3_8focr")]
+position = Vector2(12, -1985)
+
+[node name="Platform17" parent="Well" instance=ExtResource("3_8focr")]
+position = Vector2(-156, -2097)
+
+[node name="Platform18" parent="Well" instance=ExtResource("3_8focr")]
+position = Vector2(7, -2279)
+
+[node name="Platform19" parent="Well" instance=ExtResource("3_8focr")]
+position = Vector2(118, -2337)
+
+[node name="Platform20" parent="Well" instance=ExtResource("3_8focr")]
+position = Vector2(-131, -2480)
+
+[node name="Platform21" parent="Well" instance=ExtResource("3_8focr")]
+position = Vector2(20, -2678)
+
+[node name="Platform22" parent="Well" instance=ExtResource("3_8focr")]
+position = Vector2(-92, -2906)
+
+[node name="Platform23" parent="Well" instance=ExtResource("3_8focr")]
+position = Vector2(79, -1487)
+
+[node name="KillLine" type="Node2D" parent="."]
+position = Vector2(270.99997, 1068)
 scale = Vector2(24.84, 1)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="DeathSystem"]
+[node name="StaticBody2D" type="StaticBody2D" parent="KillLine"]
 
-[node name="KillLine" type="CollisionShape2D" parent="DeathSystem/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillLine/StaticBody2D"]
+position = Vector2(3.5829315, 3)
 shape = SubResource("RectangleShape2D_ph2kp")
 
 [node name="Background" type="CanvasLayer" parent="."]
@@ -154,15 +146,13 @@ layer = -1
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
 anchors_preset = -1
-anchor_left = -0.4331597
-anchor_top = -0.9722222
-anchor_right = -0.080509454
-anchor_bottom = 0.8155022
-offset_left = 1.0000305
-offset_top = -0.99999905
-offset_right = 428.00003
-offset_bottom = 647.0
-scale = Vector2(2.6954594, 0.99975336)
+anchor_left = -7.858333
+anchor_top = -11.644444
+anchor_right = 1.0407639
+offset_left = 2788.0
+offset_top = 5033.0
+offset_right = 2795.65
+offset_bottom = 5061.605
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
@@ -176,10 +166,37 @@ autoplay = true
 [node name="Game Manager" type="Node" parent="." groups=["game_manager"]]
 script = ExtResource("9_hr4ff")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(580, 572)
-limit_left = 0
-limit_top = 0
-limit_right = 1152
-limit_bottom = 648
-editor_draw_limits = true
+[node name="Hand" type="RigidBody2D" parent="."]
+top_level = true
+z_index = 1
+position = Vector2(376, 981)
+collision_layer = 2
+linear_damp = 12.0
+angular_damp = 12.0
+script = ExtResource("5_8j3e6")
+projectile_scene = ExtResource("6_g2pce")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hand"]
+shape = SubResource("CircleShape2D_cxi64")
+
+[node name="HandDot" type="Sprite2D" parent="Hand"]
+z_index = 1
+position = Vector2(-12, 9)
+texture = ExtResource("5_cxi64")
+
+[node name="Gun" type="Sprite2D" parent="Hand"]
+texture = ExtResource("6_8j3e6")
+metadata/_edit_group_ = true
+
+[node name="Muzzle" type="Marker2D" parent="Hand/Gun"]
+position = Vector2(15, -3)
+
+[node name="GunTimer" type="Timer" parent="Hand"]
+wait_time = 0.5
+autostart = true
+
+[node name="HandJoint" type="PinJoint2D" parent="."]
+top_level = true
+position = Vector2(351, 981)
+node_a = NodePath("../Player")
+node_b = NodePath("../Hand")

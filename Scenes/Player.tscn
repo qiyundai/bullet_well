@@ -19,13 +19,13 @@ script = ExtResource("1_kyqiw")
 position = Vector2(13, 34)
 texture = ExtResource("3_gntrk")
 
-[node name="Foot_L" type="Sprite2D" parent="Visual"]
-z_index = 1
-position = Vector2(-12, 34)
-texture = ExtResource("3_gntrk")
-
 [node name="Body" type="Sprite2D" parent="Visual"]
 texture = ExtResource("1_rpqav")
+
+[node name="Foot_L" type="Sprite2D" parent="Visual"]
+z_as_relative = false
+position = Vector2(-12, 34)
+texture = ExtResource("3_gntrk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
