@@ -101,13 +101,14 @@ position = Vector2(576, 324)
 [node name="Player" parent="PlayerCollection" groups=["player"] instance=ExtResource("1_xgrqb")]
 position = Vector2(4, 248)
 
-[node name="Camera2D" type="Camera2D" parent="PlayerCollection/Player"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PlayerCollection/Player"]
+remote_path = NodePath("../../../Camera2D")
 
 [node name="Hand" type="RigidBody2D" parent="PlayerCollection"]
 top_level = true
+z_index = 1
 position = Vector2(605, 572)
 collision_layer = 2
-collision_mask = 0
 linear_damp = 12.0
 angular_damp = 12.0
 script = ExtResource("5_8j3e6")
@@ -152,6 +153,11 @@ shape = SubResource("RectangleShape2D_ph2kp")
 layer = -1
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = -1
+anchor_left = -0.4331597
+anchor_top = -0.9722222
+anchor_right = -0.080509454
+anchor_bottom = 0.8155022
 offset_left = 1.0000305
 offset_top = -0.99999905
 offset_right = 428.00003
@@ -164,7 +170,16 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_l74ji")
+volume_db = -10.0
 autoplay = true
 
 [node name="Game Manager" type="Node" parent="." groups=["game_manager"]]
 script = ExtResource("9_hr4ff")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(580, 572)
+limit_left = 0
+limit_top = 0
+limit_right = 1152
+limit_bottom = 648
+editor_draw_limits = true
