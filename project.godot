@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="bullet_well"
-run/main_scene="uid://dqfnen7afcr6y"
+run/main_scene="uid://qemiy7id75qt"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=720
 window/size/viewport_height=1080
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [input]
 
@@ -45,7 +47,10 @@ ui_right={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Projectile"
 2d_physics/layer_4="Platform"
+2d_physics/layer_5="KillLine"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

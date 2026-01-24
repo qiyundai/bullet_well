@@ -3,20 +3,32 @@
 [ext_resource type="Texture2D" uid="uid://ceevm50om2fxh" path="res://PNG/Default/tile_brick.png" id="1_2p0br"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8r34y"]
-size = Vector2(59.75, 3323)
+size = Vector2(64, 3264)
 
 [node name="Wall" type="Node2D"]
 
-[node name="WallBody" type="StaticBody2D" parent="."]
+[node name="WallBodyL" type="StaticBody2D" parent="."]
+position = Vector2(32, 0)
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBody"]
+[node name="Sprite2D" type="Sprite2D" parent="WallBodyL"]
+texture_repeat = 2
+texture = ExtResource("1_2p0br")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 3264)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBodyL"]
 shape = SubResource("RectangleShape2D_8r34y")
 
-[node name="TextureRect" type="TextureRect" parent="WallBody/CollisionShape2D"]
-offset_left = -32.0
-offset_top = -1664.0
-offset_right = 32.0
-offset_bottom = 1664.0
+[node name="WallBodyR" type="StaticBody2D" parent="."]
+position = Vector2(688, 0)
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="WallBodyR"]
+texture_repeat = 2
 texture = ExtResource("1_2p0br")
-stretch_mode = 1
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 3264)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBodyR"]
+shape = SubResource("RectangleShape2D_8r34y")

@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://gvfni16000hu"]
+
+[ext_resource type="Script" uid="uid://dhhqe0oy7rs6o" path="res://Scripts/overlay_menu.gd" id="1_50uvp"]
+[ext_resource type="Texture2D" uid="uid://b0rw5rbwtv0bc" path="res://PNG/UI/bw_retry_button.png" id="1_ws3dc"]
+[ext_resource type="Texture2D" uid="uid://b6i4go1svlqiu" path="res://PNG/UI/bw_title.png" id="2_50uvp"]
+
+[node name="OverlayMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_50uvp")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.62352943, 0.050980393, 0.05490196, 0.13333334)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("1_ws3dc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(374, 382.99997)
+scale = Vector2(0.6051282, 0.6051282)
+texture = ExtResource("2_50uvp")
+region_enabled = true
+region_rect = Rect2(379, 281.5, 771, 390)
