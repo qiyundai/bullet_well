@@ -2,4 +2,4 @@
 .vscode/
 .godot/
 /android/
-/Export/
+Export/*

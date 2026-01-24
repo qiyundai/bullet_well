@@ -14,8 +14,8 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_50uvp")
-last_score_label = NodePath("")
-high_score_label = NodePath("")
+last_score_label = NodePath("MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Score")
+high_score_label = NodePath("MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/BestScore")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
