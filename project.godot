@@ -13,7 +13,7 @@ config_version=5
 config/name="bullet_well"
 run/main_scene="uid://qemiy7id75qt"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="uid://b6i4go1svlqiu"
+config/icon="uid://hfek5kmv6vgw"
 
 [autoload]
 

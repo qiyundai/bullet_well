@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://gvfni16000hu" path="res://Scenes/overlay_menu.tscn" id="11_o5yvi"]
 [ext_resource type="FontFile" uid="uid://5a7ryahobmlb" path="res://Fonts/Frijole-Regular.ttf" id="14_nb51f"]
 [ext_resource type="Texture2D" uid="uid://dbtworbsxpfln" path="res://KenneyUI/PNG/musicOn.png" id="15_7nbq1"]
-[ext_resource type="Script" uid="uid://cae1drnnxg7gt" path="res://scripts/audio_manager.gd" id="15_ewbju"]
+[ext_resource type="Script" uid="uid://cae1drnnxg7gt" path="res://Scripts/audio_manager.gd" id="15_ewbju"]
 [ext_resource type="Script" uid="uid://osdsw1ogoy5o" path="res://Scripts/toggles.gd" id="15_exi56"]
 [ext_resource type="AudioStream" uid="uid://dg12cv7mjgc87" path="res://Audio/jump.wav" id="15_nnt18"]
 [ext_resource type="AudioStream" uid="uid://b23poon5wxypl" path="res://Audio/hurt.mp3" id="18_iivbl"]
