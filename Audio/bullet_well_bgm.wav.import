@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bhkc1ggxd5dse"
-path="res://.godot/imported/bullet_well_theme.wav-6f05f39109687d42dbb17772593bde62.sample"
+path="res://.godot/imported/bullet_well_bgm.wav-0bf8379dc03f0cb1a820ae7dc081b1d8.sample"
 
 [deps]
 
-source_file="res://Audio/bullet_well_theme.wav"
-dest_files=["res://.godot/imported/bullet_well_theme.wav-6f05f39109687d42dbb17772593bde62.sample"]
+source_file="res://Audio/bullet_well_bgm.wav"
+dest_files=["res://.godot/imported/bullet_well_bgm.wav-0bf8379dc03f0cb1a820ae7dc081b1d8.sample"]
 
 [params]
 

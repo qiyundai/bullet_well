@@ -1,18 +1,28 @@
 extends CharacterBody2D
 
-@export var max_bounces := 10
+@export var base_max_bounces := 5.0
+@export var base_max_life_window := 20.0 # seconds
 @export var restitution := 1.0
 @export var push_out := 0.5
 @export var forgive_window := 0.3 # seconds
-@export var max_life_window := 60 # seconds
 
 @onready var hitbox := $CollisionShape2D/Hitbox
 
+var max_bounces: float
+var max_life_window: float
 var bounces := 0
 var _spawn_time_sec := 0.0
 
 func _ready() -> void:
 	_spawn_time_sec = Time.get_ticks_msec() / 1000.0
+	_apply_difficulty_scaling()
+
+
+func _apply_difficulty_scaling() -> void:
+	# Every 10 points of score adds +1 to bounces and lifetime
+	var bonus := ScoreManager.current_score / 10.0
+	max_bounces = base_max_bounces + bonus
+	max_life_window = base_max_life_window + bonus
 
 func _physics_process(delta: float) -> void:
 	var motion := velocity * delta

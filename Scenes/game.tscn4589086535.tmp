@@ -109,7 +109,7 @@ position = Vector2(-360, -7248)
 script = ExtResource("6_nb51f")
 current_score_label = NodePath("../BackgroundUICanvas/CurrentScore")
 
-[node name="Hand" type="RigidBody2D" parent="." node_paths=PackedStringArray("audio_player") groups=["player"]]
+[node name="Hand" type="RigidBody2D" parent="." groups=["player"]]
 top_level = true
 z_index = 1
 position = Vector2(385, 981)
@@ -118,7 +118,6 @@ linear_damp = 12.0
 angular_damp = 12.0
 script = ExtResource("7_nnt18")
 projectile_scene = ExtResource("8_ewbju")
-audio_player = NodePath("../AudioManager")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hand"]
 shape = SubResource("CircleShape2D_cxi64")
@@ -149,13 +148,12 @@ node_b = NodePath("../Hand")
 [node name="OverlayMenu" parent="UICanvas" instance=ExtResource("11_o5yvi")]
 visible = false
 
-[node name="Toggles" type="MarginContainer" parent="UICanvas" node_paths=PackedStringArray("audio_player")]
-offset_left = 592.0
-offset_top = 7.0
-offset_right = 650.0
-offset_bottom = 65.0
+[node name="Toggles" type="MarginContainer" parent="UICanvas" node_paths=PackedStringArray("audio_manager")]
+offset_left = 598.0
+offset_right = 656.0
+offset_bottom = 58.0
 script = ExtResource("15_exi56")
-audio_player = NodePath("../../AudioManager")
+audio_manager = NodePath(".")
 
 [node name="Music" type="Button" parent="UICanvas/Toggles"]
 layout_mode = 2

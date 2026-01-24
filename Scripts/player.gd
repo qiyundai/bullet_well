@@ -22,6 +22,7 @@ extends CharacterBody2D
 @export var foot_phase_offset := PI           # offset between feet (PI = opposite)
 
 @export var corpse_scene: PackedScene
+@export var audio_player: Node 
 
 var _time := 0.0
 var _foot_theta := 0.0
@@ -69,6 +70,7 @@ func _jump(delta: float) -> void:
 		velocity.y = jump_velocity
 		_jumping = true
 		_hold_time = 0.0
+		audio_player._play_jump()
 
 	# --- Jump hold (extend) ---
 	if _jumping and Input.is_action_pressed("ui_accept") and _hold_time < hold_time_max:
@@ -161,6 +163,9 @@ func _on_projectile_hit(forward: Vector2, projectile_velocity: Vector2) -> void:
 
 	# call game_over
 	get_tree().call_group("game_manager", "game_over")
+	
+	audio_player._play_hurt()
+	
 	_remove_player_nodes()
 	
 func _on_fall_through_kill_line() -> void:

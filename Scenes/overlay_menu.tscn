@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b0rw5rbwtv0bc" path="res://PNG/UI/bw_retry_button.png" id="1_ws3dc"]
 [ext_resource type="Texture2D" uid="uid://b6i4go1svlqiu" path="res://PNG/UI/bw_title.png" id="2_50uvp"]
 
-[node name="OverlayMenu" type="Control"]
+[node name="OverlayMenu" type="Control" node_paths=PackedStringArray("last_score_label", "high_score_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +14,8 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_50uvp")
+last_score_label = NodePath("")
+high_score_label = NodePath("")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -22,7 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.62352943, 0.050980393, 0.05490196, 0.13333334)
+color = Color(0.19891569, 0.0037429736, 0.0037425992, 0.4862745)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -32,7 +34,34 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Score" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Score: X"
+horizontal_alignment = 1
+
+[node name="BestScore" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Best: X"
+horizontal_alignment = 1
+
+[node name="RetryButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4

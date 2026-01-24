@@ -6,6 +6,7 @@
 size = Vector2(62, 22)
 
 [node name="Platform" type="Node2D"]
+z_index = -1
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 8
