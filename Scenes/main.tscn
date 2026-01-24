@@ -41,7 +41,7 @@ icon = ExtResource("1_bo1nx")
 flat = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(374, 382.99997)
+position = Vector2(360, 383)
 scale = Vector2(0.6051282, 0.6051282)
 texture = ExtResource("2_8gbba")
 region_enabled = true

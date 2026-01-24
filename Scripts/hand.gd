@@ -2,6 +2,7 @@ extends RigidBody2D
 
 @export var projectile_scene: PackedScene
 @export var base_shoot_interval := 2.0
+@export var min_shoot_interval := 0.4
 @export var projectile_speed := 700.0
 @export var spawn_offset := 8.0
 
@@ -45,7 +46,7 @@ func _apply_difficulty_scaling() -> void:
 	var bonus := ScoreManager.current_score / 50.0
 	shoot_interval = base_shoot_interval - bonus
 
-	if shoot_interval <= 0.0:
+	if shoot_interval <= min_shoot_interval:
 		return
 		
 	timer.wait_time = shoot_interval
