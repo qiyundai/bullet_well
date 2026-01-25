@@ -8,8 +8,10 @@ extends Control
 @export var last_score_label: Label
 @export var high_score_label: Label
 
+var last_high_score = ScoreManager.high_score
 
 func _ready() -> void:
+	
 	retry_button.pressed.connect(_reset_game_scene)
 	visibility_changed.connect(_on_visibility_changed)
 
@@ -27,7 +29,7 @@ func _update_score_display() -> void:
 	if high_score_label:
 		high_score_label.text = "Best: %d" % ScoreManager.high_score
 		
-	if ScoreManager.last_score > ScoreManager.high_score:
+	if ScoreManager.high_score > last_high_score:
 		new_record_badge.visible = true
 
 func _reset_game_scene() -> void:
