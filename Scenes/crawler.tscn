@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://rqxbnsamo22c"]
+
+[ext_resource type="Texture2D" uid="uid://c58e61h6h8tj6" path="res://PNG/SpriteSheet/red_crawler_mob_anim.png" id="1_6gxqu"]
+[ext_resource type="Script" uid="uid://b4f7ai3lnyews" path="res://Scripts/crawler.gd" id="1_ffnb3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffnb3"]
+atlas = ExtResource("1_6gxqu")
+region = Rect2(672, 0, 336, 164)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lptrg"]
+atlas = ExtResource("1_6gxqu")
+region = Rect2(336, 0, 336, 164)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5w7m"]
+atlas = ExtResource("1_6gxqu")
+region = Rect2(0, 0, 336, 164)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_husn0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffnb3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lptrg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5w7m")
+}],
+"loop": true,
+"name": &"crawl",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e5rt2"]
+radius = 47.0
+height = 194.0
+
+[node name="Crawler" type="CharacterBody2D"]
+script = ExtResource("1_ffnb3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_husn0")
+animation = &"crawl"
+frame_progress = 0.19371511
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_e5rt2")

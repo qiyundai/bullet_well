@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dqfnen7afcr6y"]
+[gd_scene load_steps=27 format=3 uid="uid://dqfnen7afcr6y"]
 
 [ext_resource type="PackedScene" uid="uid://rphmn6ot36si" path="res://Scenes/player.tscn" id="1_ldgsr"]
 [ext_resource type="PackedScene" uid="uid://bfjnpjos55xma" path="res://Scenes/wall.tscn" id="2_o5yvi"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bqnpsre5qjvkg" path="res://PNG/Default/tile_grass.png" id="3_rku1e"]
 [ext_resource type="PackedScene" uid="uid://bfbynnbss4k7g" path="res://Scenes/platform.tscn" id="4_rfjv2"]
 [ext_resource type="AudioStream" uid="uid://bhkc1ggxd5dse" path="res://Audio/bullet_well_bgm.wav" id="5_1phco"]
+[ext_resource type="Script" uid="uid://l8h43eugwjvt" path="res://Scripts/mob_spawn.gd" id="5_7t8sx"]
 [ext_resource type="Script" uid="uid://dvxek8wb2aan3" path="res://Scripts/game_manager.gd" id="6_nb51f"]
 [ext_resource type="Script" uid="uid://b706pb7hafpc8" path="res://Scripts/hand.gd" id="7_nnt18"]
 [ext_resource type="PackedScene" uid="uid://byp8ylmuii5rc" path="res://Scenes/projectile.tscn" id="8_ewbju"]
@@ -71,6 +72,17 @@ collision_mask = 2
 script = ExtResource("3_1phco")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Camera2D/KillLine/Area2D"]
+shape = SubResource("RectangleShape2D_ph2kp")
+
+[node name="MobSpawnLine" type="Node2D" parent="Player/Camera2D"]
+position = Vector2(0, 609)
+
+[node name="Area2D" type="Area2D" parent="Player/Camera2D/MobSpawnLine"]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("5_7t8sx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Camera2D/MobSpawnLine/Area2D"]
 shape = SubResource("RectangleShape2D_ph2kp")
 
 [node name="Well" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
