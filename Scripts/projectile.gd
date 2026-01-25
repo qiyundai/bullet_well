@@ -25,9 +25,6 @@ func _apply_difficulty_scaling() -> void:
 	# ignore warning: intentionally want only int for scaling factors
 	max_bounces = base_max_bounces + bonus
 	max_life_window = base_max_life_window + bonus
-	
-	print_debug('mb:', max_bounces)
-	print_debug('mlw:', max_life_window)
 
 func _physics_process(delta: float) -> void:
 	var motion := velocity * delta
@@ -57,10 +54,10 @@ func _physics_process(delta: float) -> void:
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	# --- forgiveness window: can't kill player right after spawn ---
 	var now_sec := Time.get_ticks_msec() / 1000.0
-	if now_sec - _spawn_time_sec < forgive_window:
-		return
 
 	if body.is_in_group("player"):
+		if now_sec - _spawn_time_sec < forgive_window:
+			return
 		var v: Vector2 = velocity
 		var forward := v.normalized()
 
@@ -69,5 +66,14 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 
 		if body.has_method("_on_projectile_hit"):
 			body._on_projectile_hit(forward, v)
+
+		queue_free()
+	
+	# Hit mobs
+	if body.is_in_group("mobs"):
+		if body.has_method("_on_projectile_hit"):
+			body._on_projectile_hit()
+		else:
+			body.queue_free()
 
 		queue_free()

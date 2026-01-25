@@ -1,6 +1,7 @@
 extends Control
 
 @onready var retry_button := $MarginContainer/VBoxContainer/RetryButton
+@onready var new_record_badge := $MarginContainer/VBoxContainer/NewRecordBadge
 
 ## Optional: Connect these to Label nodes you add in the editor.
 ## Set the node paths in the Inspector, or update these paths after adding labels.
@@ -25,7 +26,9 @@ func _update_score_display() -> void:
 	
 	if high_score_label:
 		high_score_label.text = "Best: %d" % ScoreManager.high_score
+		
+	if ScoreManager.last_score > ScoreManager.high_score:
+		new_record_badge.visible = true
 
-	
 func _reset_game_scene() -> void:
 	get_tree().reload_current_scene()

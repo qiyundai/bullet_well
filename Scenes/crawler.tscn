@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://rqxbnsamo22c"]
+[gd_scene load_steps=9 format=3 uid="uid://rqxbnsamo22c"]
 
 [ext_resource type="Texture2D" uid="uid://c58e61h6h8tj6" path="res://PNG/SpriteSheet/red_crawler_mob_anim.png" id="1_6gxqu"]
 [ext_resource type="Script" uid="uid://b4f7ai3lnyews" path="res://Scripts/crawler.gd" id="1_ffnb3"]
@@ -33,13 +33,19 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e5rt2"]
-radius = 47.0
-height = 194.0
+radius = 15.0
+height = 62.0
 
-[node name="Crawler" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hitbox"]
+radius = 15.0
+height = 62.0
+
+[node name="Crawler" type="CharacterBody2D" groups=["mobs"]]
+collision_layer = 32
 script = ExtResource("1_ffnb3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.32121083, 0.3212108)
 sprite_frames = SubResource("SpriteFrames_husn0")
 animation = &"crawl"
 frame_progress = 0.19371511
@@ -47,3 +53,12 @@ frame_progress = 0.19371511
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_e5rt2")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+z_index = 4
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_hitbox")

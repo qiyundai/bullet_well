@@ -37,22 +37,6 @@ size = Vector2(720, 18)
 [node name="Game" type="Node2D"]
 material = SubResource("ShaderMaterial_xgrqb")
 
-[node name="AudioManager" type="Node" parent="."]
-script = ExtResource("15_ewbju")
-
-[node name="Jump" type="AudioStreamPlayer" parent="AudioManager"]
-stream = ExtResource("15_nnt18")
-volume_db = -20.0
-
-[node name="BGM" type="AudioStreamPlayer" parent="AudioManager"]
-stream = ExtResource("5_1phco")
-
-[node name="Hurt" type="AudioStreamPlayer" parent="AudioManager"]
-stream = ExtResource("18_iivbl")
-
-[node name="GunShoot" type="AudioStreamPlayer" parent="AudioManager"]
-stream = ExtResource("19_7nbq1")
-
 [node name="BackgroundUICanvas" type="CanvasLayer" parent="."]
 layer = -2
 
@@ -68,9 +52,8 @@ theme_override_fonts/font = ExtResource("14_nb51f")
 theme_override_font_sizes/font_size = 180
 horizontal_alignment = 1
 
-[node name="Player" parent="." node_paths=PackedStringArray("kill_line", "audio_player") groups=["player"] instance=ExtResource("1_ldgsr")]
+[node name="Player" parent="." node_paths=PackedStringArray("audio_player") groups=["player"] instance=ExtResource("1_ldgsr")]
 position = Vector2(360, 981)
-kill_line = NodePath("../KillLine")
 audio_player = NodePath("../AudioManager")
 
 [node name="Camera2D" type="Camera2D" parent="Player" node_paths=PackedStringArray("target")]
@@ -86,6 +69,7 @@ position = Vector2(360, 720)
 script = ExtResource("2_rku1e")
 camera = NodePath("../Player/Camera2D")
 platform_scene = ExtResource("4_rfjv2")
+crawler_scene = ExtResource("4_crawler")
 
 [node name="Bottom" type="StaticBody2D" parent="Well" groups=["abyss"]]
 z_index = 1
@@ -169,6 +153,23 @@ audio_player = NodePath("../../AudioManager")
 layout_mode = 2
 icon = ExtResource("15_7nbq1")
 
+[node name="AudioManager" type="Node" parent="."]
+script = ExtResource("15_ewbju")
+
+[node name="Jump" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("15_nnt18")
+volume_db = -20.0
+
+[node name="BGM" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("5_1phco")
+autoplay = true
+
+[node name="Hurt" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("18_iivbl")
+
+[node name="GunShoot" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("19_7nbq1")
+
 [node name="KillLine" type="Node2D" parent="."]
 position = Vector2(360, 1641)
 
@@ -188,6 +189,7 @@ collision_layer = 16
 collision_mask = 6
 script = ExtResource("5_7t8sx")
 crawler_scene = ExtResource("4_crawler")
+score_threshold = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MobSpawnLine/Area2D"]
 shape = SubResource("RectangleShape2D_ph2kp")

@@ -9,7 +9,7 @@ size = Vector2(64, 3264)
 
 [node name="WallBodyL" type="StaticBody2D" parent="."]
 position = Vector2(32, 0)
-collision_mask = 2
+collision_mask = 34
 
 [node name="Sprite2D" type="Sprite2D" parent="WallBodyL"]
 texture_repeat = 2
@@ -22,7 +22,7 @@ shape = SubResource("RectangleShape2D_8r34y")
 
 [node name="WallBodyR" type="StaticBody2D" parent="."]
 position = Vector2(688, 0)
-collision_mask = 2
+collision_mask = 34
 
 [node name="Sprite2D" type="Sprite2D" parent="WallBodyR"]
 texture_repeat = 2

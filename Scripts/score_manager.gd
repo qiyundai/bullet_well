@@ -18,7 +18,6 @@ const PIXELS_PER_POINT = 100.0  # How many pixels of descent = 1 point
 
 signal score_changed(new_score: int)
 
-
 func _ready() -> void:
 	load_scores()
 

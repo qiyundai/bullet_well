@@ -10,7 +10,7 @@ extends MarginContainer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	music_button.pressed.connect(_toggle_music)
-	music_button.icon = music_off_icon if audio_player.bgm_playing else music_on_icon
+	music_button.icon = music_on_icon if audio_player.bgm_playing else music_off_icon
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

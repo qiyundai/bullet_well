@@ -11,7 +11,6 @@ extends CharacterBody2D
 @onready var foot_l: Sprite2D = $Visual/Foot_L
 @onready var foot_r: Sprite2D = $Visual/Foot_R
 @onready var camera: Camera2D = $Camera2D
-@onready var kill_line: Node2D = $Camera2D/KillLine
 
 # --- Tuning knobs ---
 @export var bob_amplitude := 2.5        # pixels
@@ -22,6 +21,7 @@ extends CharacterBody2D
 @export var foot_phase_offset := PI           # offset between feet (PI = opposite)
 
 @export var corpse_scene: PackedScene
+@export var kill_line: Node2D
 @export var audio_player: Node 
 
 var _time := 0.0

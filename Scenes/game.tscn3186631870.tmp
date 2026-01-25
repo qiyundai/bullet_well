@@ -37,22 +37,6 @@ size = Vector2(720, 18)
 [node name="Game" type="Node2D"]
 material = SubResource("ShaderMaterial_xgrqb")
 
-[node name="AudioManager" type="Node" parent="."]
-script = ExtResource("15_ewbju")
-
-[node name="Jump" type="AudioStreamPlayer" parent="AudioManager"]
-stream = ExtResource("15_nnt18")
-volume_db = -20.0
-
-[node name="BGM" type="AudioStreamPlayer" parent="AudioManager"]
-stream = ExtResource("5_1phco")
-
-[node name="Hurt" type="AudioStreamPlayer" parent="AudioManager"]
-stream = ExtResource("18_iivbl")
-
-[node name="GunShoot" type="AudioStreamPlayer" parent="AudioManager"]
-stream = ExtResource("19_7nbq1")
-
 [node name="BackgroundUICanvas" type="CanvasLayer" parent="."]
 layer = -2
 
@@ -68,9 +52,8 @@ theme_override_fonts/font = ExtResource("14_nb51f")
 theme_override_font_sizes/font_size = 180
 horizontal_alignment = 1
 
-[node name="Player" parent="." node_paths=PackedStringArray("kill_line", "audio_player") groups=["player"] instance=ExtResource("1_ldgsr")]
+[node name="Player" parent="." node_paths=PackedStringArray("audio_player") groups=["player"] instance=ExtResource("1_ldgsr")]
 position = Vector2(360, 981)
-kill_line = NodePath("../KillLine")
 audio_player = NodePath("../AudioManager")
 
 [node name="Camera2D" type="Camera2D" parent="Player" node_paths=PackedStringArray("target")]
@@ -168,6 +151,22 @@ audio_player = NodePath("../../AudioManager")
 [node name="Music" type="Button" parent="UICanvas/Toggles"]
 layout_mode = 2
 icon = ExtResource("15_7nbq1")
+
+[node name="AudioManager" type="Node" parent="."]
+script = ExtResource("15_ewbju")
+
+[node name="Jump" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("15_nnt18")
+volume_db = -20.0
+
+[node name="BGM" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("5_1phco")
+
+[node name="Hurt" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("18_iivbl")
+
+[node name="GunShoot" type="AudioStreamPlayer" parent="AudioManager"]
+stream = ExtResource("19_7nbq1")
 
 [node name="KillLine" type="Node2D" parent="."]
 position = Vector2(360, 1641)

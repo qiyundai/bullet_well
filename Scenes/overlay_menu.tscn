@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://gvfni16000hu"]
+[gd_scene load_steps=5 format=3 uid="uid://gvfni16000hu"]
 
 [ext_resource type="Script" uid="uid://dhhqe0oy7rs6o" path="res://Scripts/overlay_menu.gd" id="1_50uvp"]
 [ext_resource type="Texture2D" uid="uid://b0rw5rbwtv0bc" path="res://PNG/UI/bw_retry_button.png" id="1_ws3dc"]
 [ext_resource type="Texture2D" uid="uid://b6i4go1svlqiu" path="res://PNG/UI/bw_title.png" id="2_50uvp"]
+[ext_resource type="Texture2D" uid="uid://ckv2jiaqsalmn" path="res://PNG/UI/new_record_badge.png" id="2_bdg5b"]
 
 [node name="OverlayMenu" type="Control" node_paths=PackedStringArray("last_score_label", "high_score_label")]
 layout_mode = 3
@@ -38,6 +39,17 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+
+[node name="NewRecordBadge" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/NewRecordBadge"]
+z_index = 1
+position = Vector2(64, 32)
+scale = Vector2(0.14846368, 0.1301948)
+texture = ExtResource("2_bdg5b")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
