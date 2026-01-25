@@ -140,8 +140,6 @@ func _detect_inner_bounds() -> void:
 	
 	_inner_left_x = left_inner_edge + wall_margin
 	_inner_right_x = right_inner_edge - wall_margin
-	
-	print("Well: Detected inner bounds [%d, %d]" % [int(_inner_left_x), int(_inner_right_x)])
 
 func _get_collision_shape(body: StaticBody2D) -> RectangleShape2D:
 	for child in body.get_children():
