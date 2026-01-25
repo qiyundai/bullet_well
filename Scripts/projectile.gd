@@ -1,15 +1,15 @@
 extends CharacterBody2D
 
-@export var base_max_bounces := 5.0
-@export var base_max_life_window := 20.0 # seconds
+@export var base_max_bounces := 5
+@export var base_max_life_window := 20 # seconds
 @export var restitution := 1.0
 @export var push_out := 0.5
 @export var forgive_window := 0.3 # seconds
 
 @onready var hitbox := $CollisionShape2D/Hitbox
 
-var max_bounces: float
-var max_life_window: float
+var max_bounces: int
+var max_life_window: int
 var bounces := 0
 var _spawn_time_sec := 0.0
 
@@ -19,10 +19,15 @@ func _ready() -> void:
 
 
 func _apply_difficulty_scaling() -> void:
-	# Every 10 points of score adds +1 to bounces and lifetime
-	var bonus := ScoreManager.current_score / 10.0
+	# Every 25 points of score adds +1 to bounces and lifetime
+	var bonus := ScoreManager.current_score / 25.0
+	
+	# ignore warning: intentionally want only int for scaling factors
 	max_bounces = base_max_bounces + bonus
 	max_life_window = base_max_life_window + bonus
+	
+	print_debug('mb:', max_bounces)
+	print_debug('mlw:', max_life_window)
 
 func _physics_process(delta: float) -> void:
 	var motion := velocity * delta

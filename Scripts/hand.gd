@@ -45,7 +45,7 @@ func _shoot():
 	get_tree().current_scene.add_child(p)
 	
 	audio_player._play_gun_shoot()
-	
+	 
 
 func _apply_difficulty_scaling() -> void:
 	# Exponential decay: approaches min_shoot_interval asymptotically
