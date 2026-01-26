@@ -24,6 +24,7 @@ ScoreManager="*res://Scripts/score_manager.gd"
 window/size/viewport_width=720
 window/size/viewport_height=1080
 window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 window/handheld/orientation=1
 
 [gui]
