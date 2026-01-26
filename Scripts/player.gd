@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed := 300.0
-@export var jump_velocity := -1420.0          # initial impulse (negative = up)
+@export var jump_velocity := -420.0          # initial impulse (negative = up)
 @export var hold_force := 1200.0             # extra upward accel while held
 @export var hold_time_max := 0.18            # max duration you can "extend" jump
 @export var jump_cut_multiplier := 2.2       # higher = shorter tap jumps

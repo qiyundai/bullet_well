@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dqfnen7afcr6y"]
+[gd_scene load_steps=29 format=3 uid="uid://dqfnen7afcr6y"]
 
 [ext_resource type="PackedScene" uid="uid://rphmn6ot36si" path="res://Scenes/player.tscn" id="1_ldgsr"]
 [ext_resource type="PackedScene" uid="uid://bfjnpjos55xma" path="res://Scenes/wall.tscn" id="2_o5yvi"]
@@ -23,6 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://dg12cv7mjgc87" path="res://Audio/jump.wav" id="15_nnt18"]
 [ext_resource type="AudioStream" uid="uid://b23poon5wxypl" path="res://Audio/hurt.mp3" id="18_iivbl"]
 [ext_resource type="AudioStream" uid="uid://cxhbgpsg7sd3n" path="res://Audio/gun_shoot.mp3" id="19_7nbq1"]
+[ext_resource type="PackedScene" uid="uid://bteg738csger8" path="res://Scenes/touch_screen_control_canvas.tscn" id="24_vm72l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xgrqb"]
 
@@ -197,3 +198,5 @@ position = Vector2(-276, 0)
 
 [node name="SpawnPointR" type="Marker2D" parent="MobSpawnLine/Area2D"]
 position = Vector2(276, 0)
+
+[node name="TouchScreenControlCanvas" parent="." instance=ExtResource("24_vm72l")]

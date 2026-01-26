@@ -12,7 +12,6 @@ size = Vector2(28, 61)
 collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_kyqiw")
-jump_velocity = -5420.0
 corpse_scene = ExtResource("2_dewec")
 
 [node name="Visual" type="Node2D" parent="."]

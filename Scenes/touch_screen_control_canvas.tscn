@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://bteg738csger8"]
+
+[ext_resource type="Texture2D" uid="uid://dwku315s86qv5" path="res://KenneyUI/PNG/touch_buttons/default/dpad_element_east.png" id="1_isnr8"]
+[ext_resource type="Texture2D" uid="uid://c6apnjxiudrgr" path="res://KenneyUI/PNG/touch_buttons/default/dpad_element_south.png" id="2_fkngy"]
+[ext_resource type="Texture2D" uid="uid://deple2mllms83" path="res://KenneyUI/PNG/touch_buttons/pressed/dpad_element_east.png" id="2_hrplm"]
+[ext_resource type="Texture2D" uid="uid://es7kp0pix20a" path="res://KenneyUI/PNG/touch_buttons/default/dpad_element_west.png" id="3_bpuk6"]
+[ext_resource type="Texture2D" uid="uid://btd58bqrl6x6h" path="res://KenneyUI/PNG/touch_buttons/pressed/dpad_element_west.png" id="4_tnon8"]
+[ext_resource type="Texture2D" uid="uid://daytxo5nr58wt" path="res://KenneyUI/PNG/touch_buttons/pressed/dpad_element_south.png" id="6_kb4ia"]
+
+[node name="TouchScreenControlCanvas" type="CanvasLayer"]
+
+[node name="Left" type="TouchScreenButton" parent="."]
+position = Vector2(35, 882)
+texture_normal = ExtResource("1_isnr8")
+texture_pressed = ExtResource("2_hrplm")
+action = "ui_left"
+visibility_mode = 1
+
+[node name="Right" type="TouchScreenButton" parent="."]
+position = Vector2(195, 882)
+texture_normal = ExtResource("3_bpuk6")
+texture_pressed = ExtResource("4_tnon8")
+action = "ui_right"
+visibility_mode = 1
+
+[node name="Jump" type="TouchScreenButton" parent="."]
+position = Vector2(555, 882)
+texture_normal = ExtResource("2_fkngy")
+texture_pressed = ExtResource("6_kb4ia")
+action = "ui_accept"
+visibility_mode = 1

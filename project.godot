@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="bullet_well"
+config/name="Bullet_Well"
 run/main_scene="uid://qemiy7id75qt"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://hfek5kmv6vgw"
@@ -25,6 +25,7 @@ window/size/viewport_width=720
 window/size/viewport_height=1080
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+window/handheld/orientation=1
 
 [gui]
 
